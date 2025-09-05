@@ -2,7 +2,22 @@ package eci.edu.arsw;
 
 import java.util.*;
 
+/**
+ * Implementa el algoritmo BFS para calcular el camino mínimo
+ * entre dos puntos en el mapa.
+ */
 public class CaminoMinimo {
+
+    /**
+     * Busca el camino más corto desde un punto de inicio hasta un objetivo.
+     *
+     * @param grid matriz del mapa
+     * @param startX posición inicial X
+     * @param startY posición inicial Y
+     * @param goalX posición objetivo X
+     * @param goalY posición objetivo Y
+     * @return lista de coordenadas del camino o null si no existe
+     */
     public static List<int[]> bfs(char[][] grid, int startX, int startY, int goalX, int goalY) {
         int filas = grid.length;
         int cols = grid[0].length;
@@ -40,6 +55,9 @@ public class CaminoMinimo {
         return null;
     }
 
+    /**
+     * Reconstruye el camino desde el objetivo hasta el inicio usando los padres.
+     */
     private static List<int[]> reconstruirCamino(int[][] padreX, int[][] padreY, int sx, int sy, int gx, int gy) {
         List<int[]> camino = new ArrayList<>();
         int x = gx, y = gy;

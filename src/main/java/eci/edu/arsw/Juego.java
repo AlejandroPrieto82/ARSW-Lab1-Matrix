@@ -3,12 +3,24 @@ package eci.edu.arsw;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Clase principal que gestiona la ejecución del juego.
+ * Inicializa el mapa, Neo y los agentes, y coordina el flujo del juego.
+ * 
+ * Autor: Alejandro Prieto
+ */
 public class Juego {
 
-    public static volatile boolean enJuego = true; // bandera global
+    /** Bandera global para controlar si el juego sigue en ejecución. */
+    public static volatile boolean enJuego = true;
 
+    /**
+     * Punto de entrada del programa.
+     * Carga el mapa, busca las posiciones iniciales y lanza los hilos de Neo y los agentes.
+     *
+     * @param args argumentos de la línea de comandos (no usados).
+     */
     public static void main(String[] args) {
-        // cargar mapa desde resources
         Mapa mapa = new Mapa("mapa.txt",1,0,10,10);
         char[][] grid = mapa.getGrid();
 
@@ -37,7 +49,6 @@ public class Juego {
         }
 
         Neo neo = new Neo(neoX, neoY, telX, telY, mapa);
-
         Thread tNeo = new Thread(neo);
         tNeo.start();
 
@@ -46,7 +57,7 @@ public class Juego {
             Thread tAg = new Thread(ag);
             tAg.start();
         }
-        
+
         mapa.imprimir();
     }
 }
