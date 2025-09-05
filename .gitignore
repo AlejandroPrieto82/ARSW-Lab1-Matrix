@@ -74,3 +74,8 @@ docker-volume/
 # Archivos de configuración sensibles o locales
 .env
 .env.*
+
+# =========================
+# Javadoc
+# =========================
+/docs/
